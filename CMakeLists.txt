@@ -105,7 +105,7 @@ include(GNUInstallDirs)
 configure_package_config_file(
     "${PROJECT_SOURCE_DIR}/cmake/${PROJECT_NAME}-config.cmake.in"
     "${PROJECT_BINARY_DIR}/${PROJECT_NAME}-config.cmake"
-    INSTALL_DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/thread_pool"
+    INSTALL_DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}"
 )
 
 write_basic_package_version_file(
@@ -118,13 +118,13 @@ install(TARGETS ${PROJECT_NAME} EXPORT ${PROJECT_NAME}-targets)
 install(
     EXPORT ${PROJECT_NAME}-targets
     NAMESPACE dp::
-    DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/thread_pool"
+    DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}"
     FILE "${PROJECT_NAME}-targets.cmake"
 )
 
 install(FILES "${PROJECT_BINARY_DIR}/${PROJECT_NAME}-config.cmake"
               "${PROJECT_BINARY_DIR}/${PROJECT_NAME}-config-version.cmake"
-        DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/thread_pool
+        DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}
 )
 
 install(FILES ${headers}
